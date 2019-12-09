@@ -243,7 +243,17 @@ export class ContainerDetailPage {
     this.upgradeContainerModalOptions.formSubmitted = true;
     if (form.invalid || !this.selectedServers.length) return;
     let destTag = form.value.newTag;
-    let image = `${this.container.Config.Image.split(':')[0]}:${destTag}`;
+
+    //修改版本升级bug
+    let imageArrary=this.container.Config.image.split(':');
+    let imageNameWithoutVersion='';
+    for(let i=0;i<(imageArrary.length-2);i++)
+    {
+      let imageSplitItem=imageArrary[i];
+      imageNameWithoutVersion=`${imageNameWithoutVersion}${imageSplitItem}`;
+    }
+    //let image = `${this.container.Config.Image.split(':')[0]}:${destTag}`;
+    let image = `${imageNameWithoutVersion}:${destTag}`;
 
     this.upgradeContainerModalOptions.show = false;
     this.upgradeProgressModalOptions.show = true;
