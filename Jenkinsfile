@@ -27,4 +27,9 @@ pipeline {
       }
     }
   }
+  environment {
+    CURRENT_IMAGE_NAME = 'cdynamic-humpbackweb:latest'
+    CURRENT_CONTAINER_NAME = 'chumpback-web'
+    PUSH_ADDRESS = '220.167.101.61:5000'
+  }
 }
