@@ -4,7 +4,7 @@ pipeline {
     stage('node builder') {
       steps {
         sh 'yarn install'
-        sh 'yarn build -dev'
+        sh 'yarn build '
       }
     }
     stage('docker remove') {
