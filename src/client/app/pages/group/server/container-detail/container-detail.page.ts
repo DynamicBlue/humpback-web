@@ -247,10 +247,16 @@ export class ContainerDetailPage {
     //修改版本升级bug
     let imageArrary=this.container.Config.Image.split(':');
     let imageNameWithoutVersion='';
-    for(let i=0;i<(imageArrary.length-2);i++)
+    for(let i=0;i<(imageArrary.length-1);i++)
     {
       let imageSplitItem=imageArrary[i];
-      imageNameWithoutVersion=`${imageNameWithoutVersion}${imageSplitItem}`;
+      if(i==0)
+      {
+        imageNameWithoutVersion=`${imageNameWithoutVersion}${imageSplitItem}`;  
+      }
+      else{
+        imageNameWithoutVersion=`${imageNameWithoutVersion}:${imageSplitItem}`;    
+      }   
     }
     //let image = `${this.container.Config.Image.split(':')[0]}:${destTag}`;
     let image = `${imageNameWithoutVersion}:${destTag}`;
