@@ -3,7 +3,7 @@ pipeline {
   stages {
      stage('docker remove') {
       steps {
-        sh '(docker rm -f chumpbackweb&&docker rmi -f cdynamic-humpbackweb)||echo "not exits dynamic-webapi continue "'
+        sh '(docker rm -f chumpback-web&&docker rmi -f cdynamic-humpbackweb)||echo "not exits dynamic-webapi continue "'
       }
     }
     stage('docker build') {
