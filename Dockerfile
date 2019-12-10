@@ -5,6 +5,6 @@ MAINTAINER Bob Liu <Bobliu0909@gmail.com>
 #ADD humpback-web /humpback-web
 ADD . /humpback-web
 
-WORKDIR /humpback-web/src/server
+WORKDIR /humpback-web
 
 CMD ["node", "index.js"]
