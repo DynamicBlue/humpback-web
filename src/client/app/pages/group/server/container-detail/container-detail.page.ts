@@ -245,7 +245,7 @@ export class ContainerDetailPage {
     let destTag = form.value.newTag;
 
     //修改版本升级bug
-    let imageArrary=this.container.Config.image.split(':');
+    let imageArrary=this.container.Config.Image.split(':');
     let imageNameWithoutVersion='';
     for(let i=0;i<(imageArrary.length-2);i++)
     {
