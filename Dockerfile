@@ -1,6 +1,6 @@
 FROM node:8.11-alpine
 
-MAINTAINER Bob Liu <Bobliu0909@gmail.com>
+MAINTAINER DynamicBlue <huajunsoft@outlook.com>
 
 #ADD humpback-web /humpback-web
 ADD . /humpback-web
