@@ -26,6 +26,14 @@ pipeline {
  ${cdynamic-humpbackweb:latest}'''
       }
     }
+     stage('docker push server') {
+      steps {
+        sh 'echo push server docker'
+        sh 'docker tag ${CURRENT_IMAGE_NAME} ${PUSH_ADDRESS}/${CURRENT_IMAGE_NAME}'
+        sh 'docker push ${PUSH_ADDRESS}/${CURRENT_IMAGE_NAME}'
+        sh '(docker rmi -f ${PUSH_ADDRESS}/${CURRENT_IMAGE_NAME})|| echo "continue execute"'
+      }
+    }
   }
   environment {
     CURRENT_IMAGE_NAME = 'cdynamic-humpbackweb:latest'
