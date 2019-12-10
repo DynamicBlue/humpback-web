@@ -9,12 +9,12 @@ pipeline {
     }
     stage('docker remove') {
       steps {
-        sh '(docker rm -f chumpback-web&&docker rmi -f cdynamic-humpbackweb)||echo "not exits chumpback-web continue "'
+        sh '(docker rm -f ${CURRENT_CONTAINER_NAME}&&docker rmi -f ${CURRENT_IMAGE_NAME})||echo "not exits chumpback-web continue "'
       }
     }
     stage('docker build') {
       steps {
-        sh 'docker build -t cdynamic-humpbackweb .'
+        sh 'docker build -t ${CURRENT_IMAGE_NAME} .'
       }
     }
     stage('docker run') {
@@ -22,8 +22,8 @@ pipeline {
         sh '''docker run -d --net=host --restart=always \\
  -e HUMPBACK_LISTEN_PORT=8012 \\
  -v /mnt/humpback/humpback-web/dbFiles:/humpback-web/dbFiles \\
- --name chumpback-web \\
- cdynamic-humpbackweb:latest'''
+ --name ${chumpback-web} \\
+ ${cdynamic-humpbackweb:latest}'''
       }
     }
   }
