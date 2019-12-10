@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+     stage('docker remove') {
+      steps {
+        sh '(docker rm -f chumpbackweb&&docker rmi -f cdynamic-humpbackweb)||echo "not exits dynamic-webapi continue "'
+      }
+    }
     stage('docker build') {
       steps {
         sh 'docker build -t cdynamic-humpbackweb .'
